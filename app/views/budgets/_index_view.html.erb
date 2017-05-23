@@ -39,6 +39,7 @@
 		<% end %>
 	</tbody>
 </table>
+<% if @budgets.present? %>
 <% sum_record = @budgets.group(:spend_type).sum(:amount) %>
 <table>
 	<tr>
@@ -47,3 +48,4 @@
 		<td><b>Expense:</b> <%= sum_record['ExpenseCategory'] %></td>
 	</tr>
 </table>
+<% end %>
