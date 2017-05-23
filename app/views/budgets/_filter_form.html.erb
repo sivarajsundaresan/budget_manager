@@ -17,8 +17,7 @@
 	  	<%= link_to "New Category", category_new_path, class: "btn btn-danger" %> 
 	  </div>
 	  <div class="form-group">
-	  	<%= link_to 'Dowload Pdf', download_pdf_path(format: :pdf), class: "btn btn-info" %>
-	    <!-- <button class="btn btn-info">Dowload Pdf</button> -->
+	  	<%= link_to 'Dowload Pdf', 'javascript:;',  class: "btn btn-info", id: 'download_pdf' %>
 	  </div>
 	  <div class="form-group">
 	    <button class="btn btn-warning">Dowload CSV</button>
@@ -68,5 +67,9 @@
 			data: { spend_type: type, date_range: date_range }
 		});
 	}
+
+	$('#download_pdf').click(function() { 
+		$('#download_pdf').attr('href', "/download_pdf.pdf"+'?date_range='+$("#date_range").val()+'&type='+$('#spend_type').val());
+	})
 
 </script>
