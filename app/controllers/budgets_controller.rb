@@ -43,7 +43,7 @@ class BudgetsController < ApplicationController
 	end
 
 	def category_record
-		record = Budget.category_record(params[:category], current_user)
+		record = Budget.category_record(params[:category], current_user.id)
 		render json: { status: 200, info: record }	
 	end
 

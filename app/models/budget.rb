@@ -30,11 +30,11 @@ class Budget < ApplicationRecord
     end
 	end
 
-	def self.category_record(category, user)
+	def self.category_record(category, user_id)
 		if category == "ExpenseCategory"
-			user.expense_categories
+			ExpenseCategory.get_record(user_id)
 		elsif category == "IncomeCategory"
-			user.income_categories
+			IncomeCategory.get_record(user_id)
 		end	
 	end
 
