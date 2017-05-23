@@ -46,6 +46,14 @@ class Budget < ApplicationRecord
 		end	
 	end
 
+	def self.bank_type(type)
+		if type == 'ExpenseCategory'
+			"Debit"
+		elsif type == 'IncomeCategory'
+			"Credit"
+		end	
+	end
+
 	def self.category_name(id, type)
 		if type == "ExpenseCategory"
 			ExpenseCategory.get_name(id)
@@ -59,7 +67,7 @@ class Budget < ApplicationRecord
       csv << [ 'Date', 'Amount', 'Spend_type' , 'Spend', 'Description'  ]
 
       all.each do |user|
-        csv << [ user.date_time, user.amount, spend_type(user.spend_type), category_name(user.spend_id, user.spend_type), user.description ]
+        csv << [ user.date_time, user.amount, bank_type(user.spend_type), category_name(user.spend_id, user.spend_type), user.description ]
       end
     end
 	end
