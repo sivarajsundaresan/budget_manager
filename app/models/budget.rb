@@ -54,7 +54,14 @@ class Budget < ApplicationRecord
 		end			
 	end
 
+	def self.to_csv
+		CSV.generate(headers: true) do |csv|
+      csv << [ 'Date', 'Amount', 'Spend_type' , 'Spend', 'Description'  ]
+
+      all.each do |user|
+        csv << [ user.date_time, user.amount, spend_type(user.spend_type), category_name(user.spend_id, user.spend_type), user.description ]
+      end
+    end
+	end
+
 end
-
-
-# spend_type.present? ? spend_type_rec(spend_type) : Budget.all

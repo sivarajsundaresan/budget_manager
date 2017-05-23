@@ -57,8 +57,15 @@ class BudgetsController < ApplicationController
 			format.pdf do
 				html = render_to_string(:action => :download_pdf, :layout => "pdf.html.erb")
 				pdf = WickedPdf.new.pdf_from_string(html) 
-				send_data(pdf,:filename => "Download_pdf_record",:disposition => 'attachment', :type => "application/pdf")
+				send_data(pdf,:filename => "Download_pdf_record.pdf",:disposition => 'attachment', :type => "application/pdf")
   		end
+		end
+	end
+
+	def download_csv
+		@budgets = set_current_budget.filter_records(params[:spend_type], params[:date_range])
+		respond_to do |format|
+			format.csv { send_data @budgets.to_csv, filename: "budgets-#{Date.today}.csv" }
 		end
 	end
 

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get "download_pdf" => 'budgets#download_pdf'
   get 'category/new' => 'categories#form'
   post 'category_create' => 'categories#create'
+  get 'download_csv' => 'budgets#download_csv'
   
 end
