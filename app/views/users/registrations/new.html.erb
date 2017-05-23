@@ -1,0 +1,60 @@
+<div class="session_page text-center">
+  <h2>Sign up</h2>
+  <div class="session_form">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%#= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, class: "form-control" , placeholder:"Email Address" %>
+        <div class="error_message"><%= show_field_error(resource, 'email')  %></div>
+      </div>
+
+      <div class="form-group">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder:"Password" %>
+        <div class="error_message"><%= show_field_error(resource, 'password')  %></div>
+        <div class="text-left"><% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %></div>
+      </div>
+
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Confirm Password" %>
+        <div class="error_message"><%= show_field_error(resource, 'password_confirmation')  %></div>
+      </div>
+
+      <div class="actions text-left">
+        <%= f.submit "Sign up", class: "btn btn-success btn-block" %>
+      </div>
+      <span>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></span>
+    <% end %>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<style type="text/css">
+  .session_page{
+    border: 3px solid #f06e49;
+    margin: 0 auto;
+    max-width: 400px;
+    margin-top: 90px;
+  }
+  .session_page h2{
+    background-color: #f06e49;
+    color: #333;
+    margin: 0 0 20px;
+    padding: 10px 0;
+    color: #fff;
+  }
+
+   .session_form{
+     padding: 5px 40px;
+  }
+  form{
+    margin-bottom: 20px;
+  }
+
+  .error_message {
+  font-size: 12px;
+  color: #ff1a1a;
+}
+</style>
+<%#= render "users/shared/links" %>

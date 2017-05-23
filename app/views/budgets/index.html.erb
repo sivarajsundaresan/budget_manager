@@ -1,0 +1,25 @@
+
+<div class="index_section">
+  <ol class="breadcrumb">
+  	<li class="breadcrumb-item">Dashboard</li>
+    <li class="right"><%= link_to "SignOut", destroy_user_session_path, method: :delete %></li>
+  </ol>
+
+  <div class="filter_section">
+    <%= render 'filter_form' %>
+    
+    <%#= link_to 'Add Category' '#' %>
+    <%#= link_to 'Dowload Pdf', download_pdf_path(format: :pdf) %>
+  </div>
+   <div class="js_index_view">
+	 <%= render 'index_view' %>
+   </div>
+</div>
+<style type="text/css">
+	.index_section{
+		margin-top: 20px;
+	}
+	.filter_section{
+      padding: 15px;
+	}
+</style>

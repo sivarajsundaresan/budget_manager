@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BudgetManager</title>
+  <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+  <%#= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js" %>
+  <%#= javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" %>
+  <%= wicked_pdf_javascript_include_tag 'exporting' %>
+  <%= wicked_pdf_javascript_include_tag 'highcharts' %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8" />
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+<body>
+  <!-- <img src="http://148.251.42.47:4231/images/vavia.png" /> -->
+	<%= yield %>
+</body>
+</html>

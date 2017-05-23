@@ -1,0 +1,21 @@
+  table {
+    width: 100%;
+    td,th{
+      text-align: center;
+      padding: 10px;
+      font-size: 16px;
+      text-transform: capitalize;
+      color: #666;
+    }
+    td{
+      border: 1px solid #ccc;
+      height: 60px;
+      vertical-align: middle;
+    }
+    tr:nth-child(even) td:first-child {
+      border-left: 8px solid #90D350 !important;
+    }
+    tr td:last-child {
+      border-right:none;
+    }
+  }

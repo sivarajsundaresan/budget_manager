@@ -1,0 +1,58 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Type</th>
+			<th>Category</th>
+			<th>Amount</th>
+			<th>Description</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @budgets && @budgets.each do |budget| %>
+			<tr>
+				<td><%= budget.date_time %></td>
+				<td><%= Budget.spend_type(budget.spend_type) %></td>
+				<td><%= Budget.category_name(budget.spend_id, budget.spend_type) %></td>
+				<td>
+					<% if budget.spend_type == "IncomeCategory" %>
+						<span class="span_green"><%= budget.amount %></span>
+					<% else %>
+						<span class="span_red"><%= budget.amount %></span>
+					<% end %>
+				</td>
+				<td><%= budget.description %></td>
+				<td>
+					<%= link_to edit_budget_path(budget), class: 'btn-inline' do %>
+						<button class="btn btn-warning btn-xs btn_inline" data-toggle="tooltip" title="Edit">
+            	<i class="fa fa-pencil"></i>
+            </button>
+          <% end %>
+          <%= link_to budget_path(budget), class: 'btn_inline', method: :delete do %>
+          	<button class="btn btn-danger btn-xs btn_inline" data-toggle="tooltip" title="Delete">
+            	<i class="fa fa-trash"></i>
+            </button>
+          <% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td><b>Total:</b></td>
+			<td>10000</td>
+		</tr>
+		<tr><b>Total</b>
+		</tr>
+	</tfoot>
+</table>
+<style type="text/css">
+	.span_red {
+   	color: red;
+  }
+
+  .span_green {
+  	color: green;
+  }
+</style>

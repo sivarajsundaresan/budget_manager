@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BudgetManager</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+    <div class="container-fluid page-wrapper">
+     <%= yield %>
+    </div>
+  </body>
+</html>
+<style type="text/css">
+	.page-wrapper{
+		margin-top: 30px;
+	}
+</style>
