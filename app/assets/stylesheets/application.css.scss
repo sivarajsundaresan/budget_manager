@@ -15,6 +15,12 @@
  *= require daterangepicker/daterangepicker-bs3
  *= require datetimepicker
  *= require font-awesome
+ *= require toastr
  */
 
 @import "bootstrap";
+
+
+#toast-container{
+  top: 70px;
+}

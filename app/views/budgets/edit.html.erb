@@ -1,2 +1,18 @@
-<p>Edit Budget</p>
-<%= render 'form', budget: @budget %>
+<div class="bm_new">
+ <ol class="breadcrumb">
+  	<li class="breadcrumb-item"><%= link_to 'Dashboard', budgets_path %></li>
+  	<li class="breadcrumb-item">Edit</li>
+ </ol>
+  <div class="form_section"> 
+  <!-- <h5>ADD New BM </h5> -->
+  <div class="">
+  <%= render 'form', budget: @budget %>
+  </div>
+</div>
+</div>
+<style type="text/css">
+	.form_section{
+		padding: 20px;
+		border: 3px solid #ddd;
+	}
+</style>

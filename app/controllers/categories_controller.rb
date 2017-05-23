@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 		elsif params[:category] == 'IncomeCategory'
 			current_user.income_categories.create(name: params[:name])
 		end
-		redirect_to budgets_path
+		redirect_to budgets_path, notice: 'Category created Successfully'
 	end
 
 end

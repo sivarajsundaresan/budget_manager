@@ -77,12 +77,4 @@ class BudgetsController < ApplicationController
 		params.require(:budget).permit(:amount, :date_time, :description, :spend_id, :spend_type, :user_id)
 	end
 
-	def generate_pdf(browser)
-		Prawn::Document.new do
-      text "Amount: #{browser.amount}"
-      text "Date: #{browser.date_time}"
-      text "Description: #{browser.description}"
-    end.render
-	end
-
 end
