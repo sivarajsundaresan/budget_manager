@@ -1,9 +1,9 @@
 class BudgetsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_budget, only: [:edit, :update, :destroy]
-	# before_action :set_current_user, only: [:index, :new, :edit]
+	
 	def index
-		@budgets = set_current_budget
+		@budgets = set_current_budget.filter_records(params[:spend_type], params[:date_range])
 	end
 
 	def new

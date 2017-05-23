@@ -29,7 +29,7 @@
             	<i class="fa fa-pencil"></i>
             </button>
           <% end %>
-          <%= link_to budget_path(budget), class: 'btn_inline', method: :delete do %>
+          <%= link_to budget_path(budget), class: 'btn_inline', method: :delete, data: { confirm: 'Are you sure?' }  do %>
           	<button class="btn btn-danger btn-xs btn_inline" data-toggle="tooltip" title="Delete">
             	<i class="fa fa-trash"></i>
             </button>
@@ -38,14 +38,14 @@
 			</tr>
 		<% end %>
 	</tbody>
-	<tfoot>
-		<tr>
-			<td><b>Total:</b></td>
-			<td>10000</td>
-		</tr>
-		<tr><b>Total</b>
-		</tr>
-	</tfoot>
+</table>
+<% sum_record = @budgets.group(:spend_type).sum(:amount) %>
+<table>
+	<tr>
+		<td><b>Total</b></td>
+		<td><b>Income:</b> <%= sum_record['IncomeCategory'] %></td>
+		<td><b>Expense:</b> <%= sum_record['ExpenseCategory'] %></td>
+	</tr>
 </table>
 <style type="text/css">
 	.span_red {
