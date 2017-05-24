@@ -46,3 +46,12 @@
   	<li>Total-Expense:&nbsp;<span class="span_red"><%= sum_record['ExpenseCategory'] %></span></li>
   </ul>
 <% end %>
+<ul class="text-center">
+  <%= will_paginate @budgets, params: params, renderer: BootstrapPagination::Rails %>
+</ul>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.pagination a').attr('data-remote', 'true');
+  });
+</script> 
+

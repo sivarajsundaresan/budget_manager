@@ -2,7 +2,7 @@ class BudgetsController < ApplicationController
 	before_action :set_budget, only: [:edit, :update, :destroy]
 	
 	def index
-		@budgets = set_current_budget.filter_records(params[:spend_type], params[:date_range])
+		@budgets = set_current_budget.filter_records(params[:spend_type], params[:date_range]).paginate(:page => params[:page])
 	end
 
 	def new
@@ -47,7 +47,7 @@ class BudgetsController < ApplicationController
 	end
 
 	def filter_record
-		@budgets = set_current_budget.filter_records(params[:spend_type], params[:date_range])	
+		@budgets = set_current_budget.filter_records(params[:spend_type], params[:date_range]).paginate(:page => params[:page])	
 	end
 
 	def download_pdf

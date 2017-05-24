@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :budgets
 
   post '/category_record' => 'budgets#category_record'
-  post '/filter_record' => 'budgets#filter_record'
+  match '/filter_record' => 'budgets#filter_record', via: [:get, :post]
   get "download_pdf" => 'budgets#download_pdf'
   get 'category/new' => 'categories#form'
   post 'category_create' => 'categories#create'
