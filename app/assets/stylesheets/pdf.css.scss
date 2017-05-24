@@ -1,21 +1,37 @@
+ 
+.pdf_content{
+  .pdf_heading{
+    clear:both;
+    h5{
+    float: left;
+    }
+    .date_pdf{
+      float: right;
+    }
+
+  }
   table {
     width: 100%;
+      border-collapse: collapse;
     td,th{
       text-align: center;
-      padding: 10px;
       font-size: 16px;
       text-transform: capitalize;
       color: #666;
     }
-    td{
+    td,th{
       border: 1px solid #ccc;
-      height: 60px;
+      /*height: 60px;*/
       vertical-align: middle;
     }
-    tr:nth-child(even) td:first-child {
-      border-left: 8px solid #90D350 !important;
-    }
-    tr td:last-child {
-      border-right:none;
+  }
+  .summary_data{
+    padding: 0;
+    list-style: none;
+    li{
+      display: inline-block;
+      font-size: 16px;
+      margin-right: 30px;
     }
   }
+}  
