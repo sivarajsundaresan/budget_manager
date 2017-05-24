@@ -1,10 +1,10 @@
-
 <div class="index_section">
+  <div class="top_section">
   <ol class="breadcrumb">
   	<li class="breadcrumb-item">Dashboard</li>
-    <li class="right"><%= link_to "SignOut", destroy_user_session_path, method: :delete %></li>
   </ol>
-
+  <div class="right_div"><%= link_to "SignOut", destroy_user_session_path, method: :delete %></div>
+  </div>
   <div class="filter_section">
     <%= render 'filter_form' %>
     

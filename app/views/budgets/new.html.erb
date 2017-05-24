@@ -1,8 +1,11 @@
 <div class="bm_new">
- <ol class="breadcrumb">
+ <div class="top_section">
+  <ol class="breadcrumb">
   	<li class="breadcrumb-item"><%= link_to 'Dashboard', budgets_path %></li>
   	<li class="breadcrumb-item">New</li>
- </ol>
+  </ol>
+  <div class="right_div"><%= link_to "SignOut", destroy_user_session_path, method: :delete %></div>
+  </div>
   <div class="form_section"> 
   <!-- <h5>ADD New BM </h5> -->
   <div class="">
