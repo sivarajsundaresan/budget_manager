@@ -5,11 +5,20 @@ class CommandsController < ApplicationController
   # GET /commands.json
   def index
     @commands = Command.all
+    render :json => @commands
   end
 
   # GET /commands/1
   # GET /commands/1.json
   def show
+    respond_to do |format|
+      if @command.present?
+        format.json { render json: @command }
+      else
+        msg = { :status => 'error', message: 'Records Not Found'}
+        format.json { render json: msg }
+      end
+    end
   end
 
   # GET /commands/new
@@ -28,11 +37,9 @@ class CommandsController < ApplicationController
 
     respond_to do |format|
       if @command.save
-        format.html { redirect_to @command, notice: 'Command was successfully created.' }
-        format.json { render :show, status: :created, location: @command }
+        format.json { render json: @command }
       else
-        format.html { render :new }
-        format.json { render json: @command.errors, status: :unprocessable_entity }
+        format.json { render json: @command.errors, status: 401 }
       end
     end
   end
@@ -42,11 +49,9 @@ class CommandsController < ApplicationController
   def update
     respond_to do |format|
       if @command.update(command_params)
-        format.html { redirect_to @command, notice: 'Command was successfully updated.' }
-        format.json { render :show, status: :ok, location: @command }
+        format.json { render :json => @command }
       else
-        format.html { render :edit }
-        format.json { render json: @command.errors, status: :unprocessable_entity }
+        format.json { render json: @command.errors, status: 401 }
       end
     end
   end
@@ -56,19 +61,19 @@ class CommandsController < ApplicationController
   def destroy
     @command.destroy
     respond_to do |format|
-      format.html { redirect_to commands_url, notice: 'Command was successfully destroyed.' }
-      format.json { head :no_content }
+      msg = { :status => 'ok', message: 'Deleted Successfully'}
+      format.json { render json: msg }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_command
-      @command = Command.find(params[:id])
+      @command = Command.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def command_params
-      params.fetch(:command, {})
+      params.permit(:command_name, :post_id)
     end
 end
